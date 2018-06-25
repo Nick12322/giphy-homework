@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).ready(function() {
 
 var animals = ["Dogs", "Cats", "Birds", "Lions", "Tigers"];
 
@@ -9,7 +9,7 @@ function renderButtons() {
 
     $("#animals-list").empty();
     for (var i = 0; i < animals.length; i++) {
-        $("#animals-list").append("<button id="+animals[i]+" class=rt>" + animals[i] + "</button>");
+        $("#animals-list").append("<button id="+animals[i]+" class='animal-button'>" + animals[i] + "</button>");
     };
 };
 
@@ -29,7 +29,7 @@ $("#add-animal").on("click", function (event) {
           console.log(response);
           var results = response.data;
           for (var i = 0; i <= results.length; i++) {
-          $("#gifsGoHere").append("<img src="+results[i].images.fixed_height.url+"><br>");
+          $("#gifsGoHere").append("<p>Rating: "+results[i].rating+"</p><br><img src="+results[i].images.fixed_height.url+"><br>");
         }
     });
 
@@ -42,7 +42,7 @@ $("#add-animal").on("click", function (event) {
 
 renderButtons();
 
-$("#animals-list .rt").on("click", function() {
+$(document).on("click", ".animal-button", function() {
     console.log(this.id);
     var animalChosen = this.id;
     
@@ -56,7 +56,7 @@ $("#animals-list .rt").on("click", function() {
           console.log(response);
           var results = response.data;
           for (var i = 0; i <= results.length; i++) {
-          $("#gifsGoHere").append("<img src="+results[i].images.fixed_height.url+"><br>");
+          $("#gifsGoHere").append("<p>Rating: "+results[i].rating+"</p><br><img src="+results[i].images.fixed_height.url+"><br>");
         };
     });
     
